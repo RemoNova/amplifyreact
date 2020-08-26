@@ -13,9 +13,12 @@ function App() {
         <h1>Welcome in notes app</h1>
       </header>
 
-      <Notes />
-
-      <div className="jumbotron"><AmplifySignOut /></div>
+      <div className="container">
+        <Notes />
+      </div>
+      <div className="fotter">
+        <AmplifySignOut />
+      </div>
     </div>
   );
 }
