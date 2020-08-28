@@ -15,6 +15,7 @@ export default function Notes() {
         const notesFromAPI = apiData.data.listNotes.items;
         await Promise.all(notesFromAPI.map(async note => {
             if (note.image) {
+                note.filename = note.image
                 const image = await Storage.get(note.image);
                 note.image = image;
             }
@@ -92,7 +93,7 @@ export default function Notes() {
                                 <div key={note.id || note.name}>
                                     <h3>{note.name}</h3>
                                     <p class="card-text">{note.description}</p>
-                                    <button class="btn btn-danger" onClick={() => deleteNote(note, note.image.split('/').pop())}>Remove</button>
+                                    <button class="btn btn-danger" onClick={() => deleteNote(note, note.filename)}>Remove</button>
                                 </div>
                             </div>
                         </div>
